@@ -66,3 +66,12 @@ JOIN dwh.dim_customer dc
     ON s.customer_id = dc.customer_id
 JOIN dwh.dim_location dl
     ON s.customer_location = dl.customer_location;
+
+-- =========================================
+-- 5. INDEXES
+-- =========================================
+
+CREATE INDEX idx_fact_customer ON dwh.fact_transactions(customer_key);
+CREATE INDEX idx_fact_date ON dwh.fact_transactions(date_key);
+CREATE INDEX idx_fact_location ON dwh.fact_transactions(location_key);
+CREATE INDEX idx_household_id ON dim_customer(household_id);
